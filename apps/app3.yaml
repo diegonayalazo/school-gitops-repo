@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app3
+  namespace: ventas  
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/diegonayalazo/school-chart-repo.git'
+    chart: django-chart
+    targetRevision: HEAD
+    helm:
+      values: |
+        service:
+          type: LoadBalancer
+        replicaCount: 2
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ventas
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+   
