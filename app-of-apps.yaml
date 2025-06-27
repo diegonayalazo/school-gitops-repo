@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/diegonayalazo/school-app-repo.git'
+    repoURL: 'https://github.com/diegonayalazo/school-gitops-repo.git'
     targetRevision: HEAD
-    path: apps
+    path: ./apps
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: ventas
