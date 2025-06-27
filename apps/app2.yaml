@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app2
+  namespace: ventas  
+spec:
+  project: default
+  source:
+    repoURL: 'https://charts.bitnami.com/bitnami'
+    chart: apache
+    targetRevision: 10.2.1  
+    helm:
+      values: |
+        service:
+          type: LoadBalancer
+        replicaCount: 2
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ventas
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+   

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+data:
+  repositories: |
+    - url: https://github.com/diegonayalazo/school-app-repo.git
+      username: diegonayalazo
+      password: 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

@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ventas-app 
+  name: app-of-apps
   namespace: argocd  
 spec:
   project: default
   source:
     repoURL: 'https://github.com/diegonayalazo/school-app-repo.git'
     targetRevision: HEAD
-    path: .
+    path: apps
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: ventas
